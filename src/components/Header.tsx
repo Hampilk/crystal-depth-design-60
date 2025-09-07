@@ -167,7 +167,7 @@ const Header = React.memo(({ viewMode, onViewModeChange }: HeaderProps) => {
       </div>
 
       {/* Add some global styles for the glassmorphism effect */}
-      <style jsx>{`
+      <style>{`
         @supports (backdrop-filter: blur(1px)) {
           .glassmorphism-enhanced {
             backdrop-filter: blur(20px);

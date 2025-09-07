@@ -217,7 +217,7 @@ const TabNavigation = ({ activeTab, onTabChange, variant = 'top' }: TabNavigatio
       </button>
 
       {/* Enhanced styles for better browser support */}
-      <style jsx>{`
+      <style>{`
         @supports (backdrop-filter: blur(1px)) {
           .glassmorphism-enhanced {
             backdrop-filter: blur(20px);
