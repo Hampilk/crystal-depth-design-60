@@ -1,0 +1,384 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Liquid Glass Design System */
+
+@layer base {
+  :root {
+    /* Core theme colors */
+    --background: 15 15 15;
+    --foreground: 250 250 250;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 268 83% 58%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 98%;
+    --muted: 0 0% 50%;
+    --muted-foreground: 0 0% 75%;
+    --border: 0 0% 100%;
+    --input: 0 0% 20%;
+    --ring: 217 91% 60%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Glass morphism design tokens */
+    --glass-blur: 20px;
+    --glass-blur-heavy: 24px;
+    --glass-blur-light: 12px;
+    
+    /* Glass surface colors with optimized opacity */
+    --glass-primary: rgba(255, 255, 255, 0.06);
+    --glass-secondary: rgba(255, 255, 255, 0.05);
+    --glass-tertiary: rgba(255, 255, 255, 0.04);
+    --glass-hover: rgba(255, 255, 255, 0.08);
+    --glass-active: rgba(255, 255, 255, 0.10);
+    
+    /* Glass borders */
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-border-light: rgba(255, 255, 255, 0.08);
+    --glass-border-heavy: rgba(255, 255, 255, 0.15);
+    
+    /* Enhanced glass shadows for depth */
+    --glass-shadow-primary: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+      0 40px 100px rgba(0, 0, 0, 0.45);
+    --glass-shadow-secondary: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+      0 30px 80px rgba(0, 0, 0, 0.35);
+    --glass-shadow-button: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+      0 10px 30px rgba(0, 0, 0, 0.25);
+    --glass-shadow-small: 
+      inset -0.5px -1px 0.25px 1px rgba(255, 255, 255, 0.06),
+      0 8px 24px rgba(0, 0, 0, 0.25);
+
+    /* Gradient overlays */
+    --gradient-radial-blue: radial-gradient(closest-side at 50% 50%, hsl(217 91% 60% / 0.35), transparent 70%);
+    --gradient-radial-rose: radial-gradient(closest-side at 50% 50%, hsl(349 89% 60% / 0.30), transparent 70%);
+    --gradient-radial-emerald: radial-gradient(closest-side at 50% 50%, hsl(160 84% 39% / 0.25), transparent 70%);
+    --gradient-radial-purple: radial-gradient(closest-side at 50% 50%, hsl(268 83% 58% / 0.25), transparent 70%);
+    
+    /* Figma Layer Specific Glass Effects */
+    --glass-tab-bar: linear-gradient(0deg, rgba(96.77, 96.77, 96.77, 0.20) 0%, rgba(96.77, 96.77, 96.77, 0.20) 100%), rgba(51, 51, 51, 0.30);
+    --glass-tab-active: linear-gradient(0deg, rgba(30, 30, 30, 0.25) 0%, rgba(30, 30, 30, 0.25) 100%), rgba(255, 255, 255, 0.04);
+    --glass-command-bar: rgba(255, 255, 255, 0.01);
+    --glass-main-card-layers: rgba(255, 255, 255, 0.01);
+    
+    /* Animation timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Layout dimensions */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: rgb(15, 15, 15);
+    color: rgb(250, 250, 250);
+    selection-background-color: rgba(255, 255, 255, 0.1);
+    selection-color: rgb(255, 255, 255);
+  }
+
+  /* Optimized glass morphism utility classes */
+  .glass-primary {
+    background: var(--glass-primary);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-primary);
+    backdrop-filter: blur(var(--glass-blur));
+    will-change: backdrop-filter;
+  }
+
+  .glass-secondary {
+    background: var(--glass-secondary);
+    border: 1px solid var(--glass-border-light);
+    box-shadow: var(--glass-shadow-secondary);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px));
+    will-change: backdrop-filter;
+  }
+
+  .glass-button {
+    background: var(--glass-secondary);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-button);
+    backdrop-filter: blur(var(--glass-blur-light));
+    transition: var(--transition-fast);
+    will-change: transform, backdrop-filter;
+  }
+
+  .glass-button:hover {
+    background: var(--glass-hover);
+    border-color: var(--glass-border-heavy);
+    transform: scale(1.02);
+  }
+
+  .glass-button:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  .glass-small {
+    background: var(--glass-tertiary);
+    border: 1px solid var(--glass-border-light);
+    box-shadow: var(--glass-shadow-small);
+    backdrop-filter: blur(calc(var(--glass-blur) - 8px));
+    will-change: backdrop-filter;
+  }
+
+  /* Animation classes */
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .animate-scale-hover {
+    transition: transform 0.2s ease-out;
+  }
+
+  .animate-scale-hover:hover {
+    transform: scale(1.03);
+  }
+
+  /* Gradient text */
+  .text-gradient-radial {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.5) 65.74%, rgba(0, 0, 0, 0.5) 76.45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Figma Layer Specific Styles */
+  .glass-tab-bar {
+    background: var(--glass-tab-bar);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    box-shadow: 0px 0px 34.53px #F2F2F2 inset;
+    border-radius: 129.49px;
+    backdrop-filter: blur(12.95px);
+  }
+
+  .glass-tab-active {
+    background: var(--glass-tab-active);
+    background-blend-mode: linear_dodge, normal;
+    box-shadow: 
+      -0.43px -1.08px 0.32px 1.08px rgba(255, 255, 255, 0.05) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+    border-radius: 58.27px;
+    backdrop-filter: blur(6.47px);
+  }
+
+  .glass-search-button {
+    background: var(--glass-tab-bar);
+    box-shadow: 0px 0px 34.53px #F2F2F2 inset;
+    border-radius: 129.49px;
+    backdrop-filter: blur(12.95px);
+  }
+
+  .glass-command-bar {
+    background: var(--glass-command-bar);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    border-radius: 174px;
+    backdrop-filter: blur(2px);
+  }
+
+  .glass-command-item {
+    background: rgba(0, 0, 0, 0.10);
+    border-radius: 46px;
+  }
+
+  .glass-main-card-layer {
+    background: var(--glass-main-card-layers);
+    border: 3px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 
+      inset 18px 18px 10px -20px #FFFFFF, 
+      inset -14px -14px 7px -12px #B3B3B3,
+      4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 90px;
+    filter: blur(2px);
+  }
+}
+
+  /* Responsive design improvements */
+  @media (max-width: 768px) {
+    .glass-primary, .glass-secondary {
+      backdrop-filter: blur(calc(var(--glass-blur) - 4px));
+    }
+    
+    .layout-wide {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Raster Design System - Photoshop-like pixelated rendering effects */
+  .raszter-surface {
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0.08) 100%),
+      radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+      rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.25),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px) saturate(1.2) contrast(1.1);
+    transition: var(--transition-smooth);
+    will-change: transform, box-shadow, backdrop-filter;
+  }
+
+  .raszter-surface::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .raszter-button {
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.1) 100%),
+      radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
+      rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.5),
+      0 6px 24px rgba(0, 0, 0, 0.25),
+      0 2px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px) saturate(1.3) contrast(1.15);
+    transition: var(--transition-fast);
+    will-change: transform, box-shadow, backdrop-filter;
+    border-radius: 12px;
+  }
+
+  .raszter-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .raszter-button:hover {
+    background: 
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.08) 100%),
+      radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+      rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 
+      inset 0 1px 3px rgba(255, 255, 255, 0.35),
+      inset 0 -1px 3px rgba(0, 0, 0, 0.6),
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px) scale(1.02);
+    backdrop-filter: blur(14px) saturate(1.4) contrast(1.2);
+  }
+
+  .raszter-button:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.3),
+      inset 0 -1px 2px rgba(255, 255, 255, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .raszter-chip {
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.06) 100%),
+      rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.2),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px) saturate(1.1) contrast(1.05);
+    border-radius: 20px;
+    transition: var(--transition-fast);
+  }
+
+  .raszter-chip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 100%);
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+
+  /* Raster enhancement for existing glass components when .raszter-on is applied */
+  .raszter-on .glass-primary {
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.3) contrast(1.2);
+    box-shadow: 
+      var(--glass-shadow-primary),
+      0 0 60px rgba(255, 255, 255, 0.1);
+  }
+
+  .raszter-on .glass-secondary {
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.2) contrast(1.1);
+    box-shadow: 
+      var(--glass-shadow-secondary),
+      0 0 40px rgba(255, 255, 255, 0.08);
+  }
+
+  .raszter-on .glass-button {
+    backdrop-filter: blur(var(--glass-blur-light)) saturate(1.4) contrast(1.25);
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .glass-primary, .glass-secondary, .glass-button, .raszter-surface, .raszter-button {
+      border-width: 2px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
